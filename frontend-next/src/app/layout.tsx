@@ -1,3 +1,4 @@
+import MovingEyes from "./MovingEyes";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -17,15 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="w-screen bg-slate-500">
-          <div className="flex flex-col justify-center items-center p-5 space-x-5">
-            <div className="h-24 w-24 bg-slate-400 rounded-full">
-              <div className="h-12 w-12 bg-slate-600 rounded-full"></div>
-            </div>
-
-            <div className="h-24 w-24 bg-slate-400 rounded-full">
-              <div className="h-12 w-12 bg-slate-600 rounded-full"></div>
-            </div>
-          </div>
+          <MovingEyes />
         </div>
 
         {children}

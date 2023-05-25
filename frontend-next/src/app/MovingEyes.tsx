@@ -58,7 +58,7 @@ export default function MovingEyes() {
           <div
             ref={eyeRight}
             style={{ transform: `rotate(${calculateAngle(eyeRight)}deg)` }}
-            className="flex items-end p-1 bg-blue-200"
+            className="flex items-end p-1"
           >
             <div className="h-5 w-5 bg-slate-600 rounded-full"></div>
           </div>

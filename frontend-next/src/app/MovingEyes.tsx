@@ -12,26 +12,35 @@ export default function MovingEyes() {
     x: 0,
     y: 0,
   });
-  const eyeLeft = useRef<HTMLDivElement>(null);
-  const eyeRight = useRef<HTMLDivElement>(null);
+  const eyeLeft = useRef<SVGGElement>(null);
+  const eyeRight = useRef<SVGGElement>(null);
 
-  function calculateAngle(element: RefObject<HTMLDivElement>) {
+  function calculateAngle(element: RefObject<SVGGElement>) {
     if (!element.current) return;
+    /* let elementX = element.current.offsetLeft + element.current.clientWidth / 2;
+    let elementY = element.current.offsetTop + element.current.clientHeight / 2; */
 
-    let elementX = element.current.offsetLeft + element.current.clientWidth / 2;
-    let elementY = element.current.offsetTop + element.current.clientHeight / 2;
+    let elementX =
+      element.current.getBoundingClientRect().left +
+      element.current.getBoundingClientRect().width / 2;
+    let elementY =
+      element.current.getBoundingClientRect().top +
+      element.current.getBoundingClientRect().width / 2;
 
     let radiant = Math.atan2(
       mouseCoordinates.x - elementX,
       mouseCoordinates.y - elementY
     );
     let rotation = radiant * (180 / Math.PI) * -1 + -18;
-
+    console.log(rotation);
     return rotation;
   }
 
   const handleMouseMove = (event: MouseEvent) => {
     setMouseCoordinates({ x: event.clientX, y: event.clientY });
+    if (!eyeLeft.current) return;
+    console.log("mimimmmimimimimimi");
+    eyeLeft.current.style.transform = `rotate(${calculateAngle(eyeLeft)})`;
   };
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
@@ -43,7 +52,7 @@ export default function MovingEyes() {
 
   return (
     <>
-      <div className="flex items-center p-3 space-x-3">
+      {/* <div className="flex items-center p-3 space-x-3">
         <div className="flex h-12 w-12 bg-slate-400 rounded-full justify-center">
           <div
             ref={eyeLeft}
@@ -63,7 +72,7 @@ export default function MovingEyes() {
             <div className="h-5 w-5 bg-slate-600 rounded-full"></div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-[100px]">
         <svg viewBox="88.144 116.627 118.95 91.421">
@@ -104,12 +113,12 @@ export default function MovingEyes() {
           ></path>
 
           <g
-            id="eyeLeft"
+            ref={eyeLeft}
             style={{
               transformOrigin: "center",
               transformBox: "fill-box",
+              //transform: `rotate(${calculateAngle(eyeLeft)})`,
             }}
-            transform="rotate(36)"
           >
             <ellipse
               style={{
@@ -136,7 +145,6 @@ export default function MovingEyes() {
           </g>
 
           <g
-            id="eyeRight"
             style={{ transformOrigin: "center", transformBox: "fill-box" }}
             transform="rotate(120)"
           >

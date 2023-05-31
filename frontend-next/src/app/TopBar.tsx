@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 export default function TopBar() {
+  const pathName = usePathname();
+
   return (
     <>
       <nav className="w-full flex justify-between p-4 items-center shadow-md">
@@ -14,7 +19,7 @@ export default function TopBar() {
           </Link>
           <Link href={"/"}>Blog</Link>
           <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Home</Link>
+          <Link href={"/"}>pathname {pathName}</Link>
         </div>
       </nav>
     </>

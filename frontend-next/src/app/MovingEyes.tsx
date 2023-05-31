@@ -32,15 +32,11 @@ export default function MovingEyes() {
       mouseCoordinates.y - elementY
     );
     let rotation = radiant * (180 / Math.PI) * -1 + -18;
-    console.log(rotation);
     return rotation;
   }
 
   const handleMouseMove = (event: MouseEvent) => {
     setMouseCoordinates({ x: event.clientX, y: event.clientY });
-    if (!eyeLeft.current) return;
-    console.log("mimimmmimimimimimi");
-    eyeLeft.current.style.transform = `rotate(${calculateAngle(eyeLeft)})`;
   };
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);

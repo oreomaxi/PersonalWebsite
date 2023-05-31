@@ -1,4 +1,5 @@
 import MovingEyes from "./MovingEyes";
+import TopBar from "./TopBar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -17,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="w-screen bg-slate-500">
+        {/* <div className="w-screen bg-slate-500">
           <MovingEyes />
-        </div>
-
+        </div> */}
+        <TopBar />
         {children}
       </body>
     </html>

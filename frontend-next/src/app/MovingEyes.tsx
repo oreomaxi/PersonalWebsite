@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, RefObject } from "react";
+import React, { useState, useRef, useEffect, RefObject } from "react";
 
 interface MousePosition {
   x: number;
@@ -12,20 +12,20 @@ export default function MovingEyes() {
     x: 0,
     y: 0,
   });
-  const eyeLeft = useRef<SVGGElement>(null);
-  const eyeRight = useRef<SVGGElement>(null);
+  const eyeLeft = useRef<HTMLDivElement>(null);
+  const eyeRight = useRef<HTMLDivElement>(null);
 
-  function calculateAngle(element: RefObject<SVGGElement>) {
+  function calculateAngle(element: RefObject<HTMLDivElement>) {
     if (!element.current) return;
-    /* let elementX = element.current.offsetLeft + element.current.clientWidth / 2;
-    let elementY = element.current.offsetTop + element.current.clientHeight / 2; */
+    let elementX = element.current.offsetLeft + element.current.clientWidth / 2;
+    let elementY = element.current.offsetTop + element.current.clientHeight / 2;
 
-    let elementX =
+    /* let elementX =
       element.current.getBoundingClientRect().left +
       element.current.getBoundingClientRect().width / 2;
     let elementY =
       element.current.getBoundingClientRect().top +
-      element.current.getBoundingClientRect().width / 2;
+      element.current.getBoundingClientRect().width / 2; */
 
     let radiant = Math.atan2(
       mouseCoordinates.x - elementX,
@@ -48,7 +48,7 @@ export default function MovingEyes() {
 
   return (
     <>
-      {/* <div className="flex items-center p-3 space-x-3">
+      <div className="flex items-center p-3 space-x-3">
         <div className="flex h-12 w-12 bg-slate-400 rounded-full justify-center">
           <div
             ref={eyeLeft}
@@ -68,11 +68,12 @@ export default function MovingEyes() {
             <div className="h-5 w-5 bg-slate-600 rounded-full"></div>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      <div className="w-[100px]">
+      {/* <div className="w-[100px]">
         <svg
-          viewBox="88.144 116.627 118.95 91.421" /*onMouseMove={handleMouseMove} */
+          viewBox="88.144 116.627 118.95 91.421"
+          //onMouseMove={handleMouseMove}
         >
           <path
             d="M9.93 67.23s3.52-5.7 9.01-11.76c2.01-2.21 5.07-5.49 5.21-6.76c.14-1.27-2.11-8.09-3.24-13.73c-.94-4.71-1.41-10.7.28-12.53s11.23.04 16.89 2.82c5.8 2.84 8.77 5.34 9.57 5.35c1 .01 6.9-4.65 16.05-4.5s15.63 4.36 16.89 4.36s5.34-3.04 10.98-5.98c6.62-3.45 14.36-3.73 15.91-2.6c1.55 1.13.56 9.29-.56 13.51c-1.44 5.39-3.87 11.47-3.73 12.6c.14 1.13 2.6 2.32 7.53 7.81c3.89 4.34 8.66 12.81 8.66 12.81L66.67 79.48L9.93 67.23z"
@@ -112,7 +113,7 @@ export default function MovingEyes() {
 
           <g
             id="eyeLeft"
-            ref={eyeLeft}
+            //ref={eyeLeft}
             style={{
               transformOrigin: "center",
               transformBox: "fill-box",
@@ -173,47 +174,7 @@ export default function MovingEyes() {
             ></ellipse>
           </g>
         </svg>
-      </div>
-
-      {/* <svg
-        viewBox="0 0 34 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="nav__eyes"
-      >
-        <g
-          id="eyeLeft"
-          data-svg-origin="8 8"
-          transform="matrix(-0.02319,0.99973,-0.99973,-0.02319,16.18336,0.18768)"
-          style={{ transformOrigin: "0px 0px" }}
-        >
-          <path
-            d="M8 15.25C12.0041 15.25 15.25 12.0041 15.25 8C15.25 3.99594 12.0041 0.75 8 0.75C3.99594 0.75 0.75 3.99594 0.75 8C0.75 12.0041 3.99594 15.25 8 15.25Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-          ></path>
-          <path
-            d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
-            fill="currentColor"
-          ></path>
-        </g>
-        <g
-          id="eyeRight"
-          data-svg-origin="26 8"
-          transform="matrix(-0.02319,0.99973,-0.99973,-0.02319,34.60078,-17.80746)"
-          style={{ transformOrigin: "0px 0px" }}
-        >
-          <path
-            d="M26 15.25C30.0041 15.25 33.25 12.0041 33.25 8C33.25 3.99594 30.0041 0.75 26 0.75C21.9959 0.75 18.75 3.99594 18.75 8C18.75 12.0041 21.9959 15.25 26 15.25Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-          ></path>
-          <path
-            d="M26 9C28.2091 9 30 7.20914 30 5C30 2.79086 28.2091 1 26 1C23.7909 1 22 2.79086 22 5C22 7.20914 23.7909 9 26 9Z"
-            fill="currentColor"
-          ></path>
-        </g>
-      </svg> */}
+            </div>*/}
     </>
   );
 }

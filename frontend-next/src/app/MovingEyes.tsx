@@ -71,7 +71,9 @@ export default function MovingEyes() {
       </div> */}
 
       <div className="w-[100px]">
-        <svg viewBox="88.144 116.627 118.95 91.421">
+        <svg
+          viewBox="88.144 116.627 118.95 91.421" /*onMouseMove={handleMouseMove} */
+        >
           <path
             d="M9.93 67.23s3.52-5.7 9.01-11.76c2.01-2.21 5.07-5.49 5.21-6.76c.14-1.27-2.11-8.09-3.24-13.73c-.94-4.71-1.41-10.7.28-12.53s11.23.04 16.89 2.82c5.8 2.84 8.77 5.34 9.57 5.35c1 .01 6.9-4.65 16.05-4.5s15.63 4.36 16.89 4.36s5.34-3.04 10.98-5.98c6.62-3.45 14.36-3.73 15.91-2.6c1.55 1.13.56 9.29-.56 13.51c-1.44 5.39-3.87 11.47-3.73 12.6c.14 1.13 2.6 2.32 7.53 7.81c3.89 4.34 8.66 12.81 8.66 12.81L66.67 79.48L9.93 67.23z"
             fill="#b0b0b0"
@@ -109,6 +111,7 @@ export default function MovingEyes() {
           ></path>
 
           <g
+            id="eyeLeft"
             ref={eyeLeft}
             style={{
               transformOrigin: "center",
@@ -141,6 +144,7 @@ export default function MovingEyes() {
           </g>
 
           <g
+            id="eyeRight"
             style={{ transformOrigin: "center", transformBox: "fill-box" }}
             transform="rotate(120)"
           >
